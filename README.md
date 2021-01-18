@@ -1,5 +1,7 @@
 # Klondike
 
+[![Build Status](https://travis-ci.org/vvkostenko/klondike_cpp.svg?branch=master)](https://travis-ci.org/vvkostenko/klondike_cpp)
+
 Реализация пасьянса "Косынка" в консоли
 
 
