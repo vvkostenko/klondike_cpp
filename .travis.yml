@@ -18,10 +18,6 @@ install:
 
 compiler:
     - clang
- 
-packages:
-    - cmake-data
-    - cmake
 
 script:
     # Сборочный скрипт
