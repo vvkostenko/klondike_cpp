@@ -3,17 +3,20 @@ language: c++
 os:
     - linux
     - osx
-    #- windows
+    compiler:
+        - clang
+    
+    - windows
+    compiler:
+        - msvc
 
 env:
-    # Список переменных окружения, влияющих на матрицу сборки:
-    - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
-    - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
-    - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
-    - TARGET_CPU=x86 BUILD_CONFIGURATION=Release        
-
-compiler:
-    - clang
+    global:
+        # Список переменных окружения, влияющих на матрицу сборки:
+        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+        - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+        - TARGET_CPU=x86 BUILD_CONFIGURATION=Release        
 
 script:
     # Сборочный скрипт
