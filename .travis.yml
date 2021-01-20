@@ -1,8 +1,8 @@
 language: c++
 
 os:
-    - linux
-    - osx
+    #- linux
+    #- osx
     - windows
 
 env:
@@ -13,7 +13,8 @@ env:
     - TARGET_CPU=x86 BUILD_CONFIGURATION=Release        
 
 compiler:
-    - clang
+    #- clang
+    - msvc
 
 script:
     # Сборочный скрипт
