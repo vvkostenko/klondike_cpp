@@ -1,25 +1,34 @@
 language: c++
 
-env:
-    global:
-        # Список переменных окружения, влияющих на матрицу сборки:
-        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
-        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
-        - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
-        - TARGET_CPU=x86 BUILD_CONFIGURATION=Release        
-
-
 jobs:
     include:
     - os: linux
         compiler: clang
+        env:
+            # Список переменных окружения, влияющих на матрицу сборки:
+            - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+            - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+            - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+            - TARGET_CPU=x86 BUILD_CONFIGURATION=Release    
         
     - os: osx
         compiler: clang
-        
+         env:
+            # Список переменных окружения, влияющих на матрицу сборки:
+            - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+            - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+            - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+            - TARGET_CPU=x86 BUILD_CONFIGURATION=Release 
+            
     - os: windows
         compiler: msvc
-
+        env:
+            # Список переменных окружения, влияющих на матрицу сборки:
+            - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+            - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+            - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+            - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+            
 script:
     # Сборочный скрипт
     - mkdir -p build
