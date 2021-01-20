@@ -1,15 +1,5 @@
 language: c++
 
-os:
-    - linux
-    - osx
-    compiler:
-        - clang
-    
-    - windows
-    compiler:
-        - msvc
-
 env:
     global:
         # Список переменных окружения, влияющих на матрицу сборки:
@@ -17,6 +7,18 @@ env:
         - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
         - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
         - TARGET_CPU=x86 BUILD_CONFIGURATION=Release        
+
+
+jobs:
+    include:
+    - os: linux
+        compiler: clang
+        
+    - os: osx
+        compiler: clang
+        
+    - os: windows
+        compiler: msvc
 
 script:
     # Сборочный скрипт
