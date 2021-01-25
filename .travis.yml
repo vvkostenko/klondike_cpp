@@ -1,34 +1,47 @@
 language: cpp
 
+env:
+  # Список переменных окружения, влияющих на матрицу сборки:
+  # unix
+  - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+  - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+  - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+  - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+  # win
+  - TARGET_CPU=x64 BUILD_CONFIGURATION=Debug
+  - TARGET_CPU=x64 BUILD_CONFIGURATION=Release
+  - TARGET_CPU=win32 BUILD_CONFIGURATION=Debug
+  - TARGET_CPU=win32 BUILD_CONFIGURATION=Release
+
 jobs:
   include:
     - os: windows
       compiler: msvc
-      env:
-        # Список переменных окружения, влияющих на матрицу сборки:
-        - TARGET_CPU=x64 BUILD_CONFIGURATION=Debug
-        - TARGET_CPU=x64 BUILD_CONFIGURATION=Release
-        - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
-        - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
-    
+
     - os: linux
       compiler: clang
-      env:
-        # Список переменных окружения, влияющих на матрицу сборки:
-        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
-        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
-        - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
-        - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
-    
+
     - os: osx
       compiler: clang
-      env:
-        # Список переменных окружения, влияющих на матрицу сборки:
-        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
-        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
-        - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
-        - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
 
+  exclude:
+    - os: windows
+      env: TARGET_CPU=amd64
+      
+    - os: windows
+      env: TARGET_CPU=x86
+      
+    - os: linux
+      env: TARGET_CPU=win32
+
+    - os: linux
+      env: TARGET_CPU=x64
+
+    - os: osx
+      env: TARGET_CPU=win32
+
+    - os: osx
+      env: TARGET_CPU=x64      
 
 script:
   # Сборочный скрипт
