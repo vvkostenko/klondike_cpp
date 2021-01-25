@@ -1,9 +1,13 @@
 language: cpp
 
-matrix:
-    include:
-        -os: windows
-        compiler: msvc
+jobs:
+  include:
+    - os: windows
+      compiler: msvc
+    - os: linux
+      compiler: clang
+    - os: osx
+      compiler: clang
 
 script:
     # Сборочный скрипт
