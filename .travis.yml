@@ -1,20 +1,9 @@
-language: c++
+language: cpp
 
-os:
-    #- linux
-    #- osx
-    - windows
-
-env:
-    # Список переменных окружения, влияющих на матрицу сборки:
-    - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
-    - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
-    - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
-    - TARGET_CPU=x86 BUILD_CONFIGURATION=Release        
-
-compiler:
-    #- clang
-    - msvc
+matrix:
+    include:
+        - os: windows
+        compiler: msvc
 
 script:
     # Сборочный скрипт
@@ -23,4 +12,4 @@ script:
     - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU
     - cmake --build .
     #- ctest --output-on-failure
-    
+
