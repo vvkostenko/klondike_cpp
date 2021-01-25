@@ -2,7 +2,7 @@ language: cpp
 
 matrix:
     include:
-        - os: windows
+        -os: windows
         compiler: msvc
 
 script:
