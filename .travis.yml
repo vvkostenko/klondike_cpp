@@ -4,11 +4,31 @@ jobs:
   include:
     - os: windows
       compiler: msvc
-
-    - os: 
-        - linux
-        - osx
+      env:
+        # Список переменных окружения, влияющих на матрицу сборки:
+        - TARGET_CPU=x64 BUILD_CONFIGURATION=Debug
+        - TARGET_CPU=x64 BUILD_CONFIGURATION=Release
+        - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+        - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+    
+    - os: linux
       compiler: clang
+      env:
+        # Список переменных окружения, влияющих на матрицу сборки:
+        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+        - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+        - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+    
+    - os: osx
+      compiler: clang
+      env:
+        # Список переменных окружения, влияющих на матрицу сборки:
+        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+        - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+        - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+
 
 script:
   # Сборочный скрипт
@@ -17,4 +37,3 @@ script:
   - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU
   - cmake --build .
   #- ctest --output-on-failure
-
