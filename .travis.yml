@@ -18,3 +18,23 @@ script:
   - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU
   - cmake --build .
   #- ctest --output-on-failure
+
+deploy:
+  # выкладываем на GitHub Releases
+  provider: releases 
+
+  # токен, зашифрованный с помощью `travis encrypt`
+  api_key:
+    secure: "PlD8L2kr0yBofG7n/cunMxGA9+EEAarsSB5Nr2ELnamJnGBAELLqHe5R9vkOu6dIr95l1/lfiWVld2jps+bUexi9Kt8zr4pk7zaugc2woTLA0tiGUJ0aisM9xjdqCWmRP+Z9Zvb7cH1lPPRMXkfs5aj2yQeG6/Vwuct4cI/gjM0ZGjzPuwK/bLTG9Qx4y1DPdxe5YSGUTkW0mNK7vQgb6roItFZqky00GifM5f5Zvj1nkVJS7l49vxz5usYM6Gh0oYdIYX5TgGwMvAJPfn2i6jtfJFe4eE3YTkp/USZFJE9C6zPBsVErBDDmj846UpcAuw8hkGra2AD9QJyFtuPaatbxI8FZpsePwtT2jF7hU/bmoo+8anX0ra6+PcQ0zlwkhDDyEzHBj492+if6khWP1xvc9Jfaw6TSoYGAutphbaCZp4xvGXOOxRt8OcMWL0j8oRSQhaqARKkHPItSVvIIZrHX7XNfyr3GJhW15qidpA9DvhwPkkoGRH10S4GR/HUlUaIxSBMLSrD5Fp/Gswurq2bAvCTKqkO3W0b2qrh1YTyz2w3RMHiJ3V49vC+RvqZcFemQ031gvJQq9zrig1g0LqLjDtTXG42CdYTvV3BXa4e/hTL4wjfWGy17WMvU9MRHK+seQqzwZyKwBiXZwwD4TwJRgbRpCz96+nLXOPhK0kg="
+
+  file:
+    # список артефактов
+    - klondike.exe
+    - klondike
+  
+  # не удалять сгенерированные во время сборки файлы перед развёртыванием
+  skip_cleanup: true
+
+  # выполнять deploy только для tagged-commit
+  on:
+    tags: true
