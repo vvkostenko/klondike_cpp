@@ -5,11 +5,11 @@ jobs:
     - os: windows
       compiler: msvc
 
-    - os: linux
-      compiler: clang
+    #- os: linux
+    #  compiler: clang
 
-    - os: osx
-      compiler: clang  
+    #- os: osx
+    #  compiler: clang  
 
 script:
   # Сборочный скрипт
@@ -30,7 +30,7 @@ deploy:
   file:
     # список артефактов
     - klondike.exe
-    - klondike
+    #- klondike
   
   # не удалять сгенерированные во время сборки файлы перед развёртыванием
   skip_cleanup: true
